@@ -138,8 +138,10 @@ def create_model(bert_config, is_training, is_eval, is_output, input_ids, input_
 
 			if train_model =='teacher':
 				loss = tf.reduce_mean(tct_teacher_loss)
+				tf.summary.scalar('loss', loss)
 			elif train_model =='student':
 				loss = tf.reduce_mean(tct_teacher_student_kl_loss)
+				tf.summary.scalar('loss', loss)
 
 		else:
 			if eval_model=='student':
